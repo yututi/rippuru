@@ -1,49 +1,80 @@
-import { DirectiveOptions } from 'vue'
+import { DirectiveOptions, VNodeDirective } from 'vue'
 
 export interface RippuruOptions {
-
+    isExist?: boolean
+    color?: string
 }
 
-class RippleObj {
+function addListener(el: RipplableHTMLElement, binding: VNodeDirective) {
+    el._rippuru = el._rippuru || {}
 
-    private el: HTMLElement
+    if (el._rippuru.isExist) return
+    el._rippuru.isExist = true
 
-    constructor() {
-        const wrapper = document.createElement('div')
-        const ripple = document.createElement('div')
-        wrapper.classList.add('rippuru-wrapper')
-        ripple.classList.add('rippuru-wrapper__ripple')
-        wrapper.appendChild(ripple)
-
-        this.el = wrapper
-    }
-
-    appendTo(el: HTMLElement) {
-        el.appendChild(this.el)
-    }
-
-    remove() {
-        this.el.parentNode && this.el.parentNode.removeChild(this.el)
-    }
+    el._rippuru.color = binding.expression
+    el.addEventListener('mousedown', showRipple)
 }
 
-class RippuruManager {
-    ripples: RippleObj[] = []
+function showRipple(e: MouseEvent) {
 
-    appendNewRipple(parent: HTMLElement) {
-        const ripple = new RippleObj()
-        ripple.appendTo(parent)
-        this.ripples.push(ripple)
+    const target = e.target as RipplableHTMLElement
+    const wrapper = document.createElement('span')
+    const ripple = document.createElement('span')
+
+    wrapper.classList.add('rippuru-wrapper')
+    ripple.classList.add('rippuru-wrapper__ripple')
+    const { x, y, size } = calcPosition(target, e)
+
+    ripple.style.left = `${x}px`
+    ripple.style.top = `${y}px`
+    ripple.style.width = `${size}px`
+    ripple.style.height = `${size}px`
+
+    const { color } = target._rippuru || { color: null }
+
+    if (color && typeof color === 'string') {
+        ripple.style.backgroundColor = color
     }
+
+
+    const computed = window.getComputedStyle(target)
+    let previousPosition = computed.position
+    if (computed && computed.position === 'static') {
+        target.style.position = 'relative'
+        previousPosition = 'static'
+    }
+
+    wrapper.appendChild(ripple)
+    target.appendChild(wrapper)
+
+    setTimeout(() => {
+        target.style.position = previousPosition
+        target.removeChild(wrapper)
+    }, 500)
 }
 
-const Rippuru: DirectiveOptions = {
-    bind(el, binding, vnode, oldVnode) {
-        el.addEventListener('click', () => {
+function calcPosition(el: HTMLElement, e: MouseEvent) {
+    const { left, top, width, height } = el.getBoundingClientRect()
+    const size = width > height ? width : height
+    const x = e.clientX - left - size / 2
+    const y = e.clientY - top - size / 2
 
-        })
-    }
 
+    return { x, y, size }
 }
 
-export default Rippuru
+interface RipplableHTMLElement extends HTMLElement {
+    _rippuru: RippuruOptions
+}
+
+function removeListener(el: RipplableHTMLElement) {
+    delete el._rippuru
+    el.removeEventListener('mousedown', showRipple)
+}
+
+const RippuruDirective: DirectiveOptions = {
+    bind: addListener,
+    unbind: removeListener
+}
+
+export default RippuruDirective

@@ -1,43 +1,15 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="rippuru.js"></script>
-    <script lang="javascript">
-
-        Vue.use(Rippuru)
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const app = new Vue({
-                el: '#app',
-                methods: {
-                    onclick: function () {
-                        console.log('clicked')
-                    }
-                }
-            })
-        })
-    </script>
-    <style>
-        #app {
-            display: flex;
-        }
-        button, input[type="button"]{
-            background-color: transparent;
-            border: 1px solid gainsboro;
-            padding: 1em;
-            margin-top: 10px;
-            margin-left: 10px;
-        }
-    </style>
-</head>
-
-<body>
-    <div id="app">
-        <button @click="onclick">click me</button>
-        <input @click="onclick" type="button" value="CLICK ME">
-    </div>
-</body>
-
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but popup doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
 </html>

@@ -9,11 +9,30 @@
     overflow: hidden;
     pointer-events: none;
     contain: strict;
+    z-index: 0;
 
     &__ripple {
         position: absolute;
         border-radius: 50%;
         opacity: 0;
         background-color: currentColor;
+        will-change: transform, opacity;
+        animation: ripple 0.5s;
+    }
+}
+
+@keyframes ripple {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.3);
+    }
+
+    80% {
+        opacity: 0.1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
     }
 }

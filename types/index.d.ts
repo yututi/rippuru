@@ -1,4 +1,5 @@
 import { PluginObject } from 'vue';
-import { RippleOptions } from './ripple';
-declare const Rippuru: PluginObject<RippleOptions>;
+import { RippuruOptions } from './rippuru';
+import './rippuru.styl';
+declare const Rippuru: PluginObject<RippuruOptions>;
 export default Rippuru;
