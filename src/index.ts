@@ -1,8 +1,15 @@
 import { PluginObject } from 'vue'
-import { RippleOptions } from './ripple'
+import { RippuruOptions } from './rippuru'
+import './rippuru.styl'
 
-const Ripple: PluginObject<RippleOptions> = {
+const Rippuru: PluginObject<RippuruOptions> = {
     install(Vue, options?) {
-
+        // Vue.directive()
     }
 }
+
+if (typeof window !== 'undefined') {
+	window.Rippuru = Rippuru;
+}
+
+export default Rippuru

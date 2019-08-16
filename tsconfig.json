@@ -2,15 +2,19 @@
     "compilerOptions": {
         "sourceMap": true,
         "declaration": true,
+        "declarationDir": "types",
         "module": "commonjs",
         "target": "es5",
         "lib": [
             "dom",
             "es6"
-        ]
+        ],
     },
     "include": [
         "src"
     ],
-    "compileOnSave": false
+    "compileOnSave": false,
+    "files": [
+        "src/shims-tsx.d.ts"
+    ]
 }

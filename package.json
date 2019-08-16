@@ -2,19 +2,26 @@
   "name": "rippuru",
   "version": "1.0.0",
   "description": "ripple plugin for vue.js",
-  "main": "dist/index.js",
+  "main": "dist/ripple.js",
+  "types": "types/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cross-env NODE_ENV=production webpack",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "css-loader": "^3.2.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.3",
     "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.6"
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.8.0",
+    "cross-env": "^5.2.0",
+    "vue": "^2.6.10"
   },
   "dependencies": {
-    "vue": "^2.6.10"
   }
 }

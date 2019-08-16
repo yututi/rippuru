@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="rippuru.js"></script>
+    <script lang="javascript">
+
+        Vue.use(Rippuru)
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const app = new Vue({
+                el: '#app',
+                methods: {
+                    onclick: function () {
+                        console.log('clicked')
+                    }
+                }
+            })
+        })
+    </script>
+    <style>
+        #app {
+            display: flex;
+        }
+        button, input[type="button"]{
+            background-color: transparent;
+            border: 1px solid gainsboro;
+            padding: 1em;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="onclick">click me</button>
+        <input @click="onclick" type="button" value="CLICK ME">
+    </div>
+</body>
+
+</html>
