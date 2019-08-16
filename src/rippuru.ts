@@ -3,6 +3,8 @@ import { DirectiveOptions, VNodeDirective } from 'vue'
 export interface RippuruOptions {
     isExist?: boolean
     color?: string
+    count?: number
+    isStatic?: boolean
 }
 
 function addListener(el: RipplableHTMLElement, binding: VNodeDirective) {
@@ -18,6 +20,8 @@ function addListener(el: RipplableHTMLElement, binding: VNodeDirective) {
 function showRipple(e: MouseEvent) {
 
     const target = e.target as RipplableHTMLElement
+    if (!target._rippuru || !target._rippuru.isExist) return
+
     const wrapper = document.createElement('span')
     const ripple = document.createElement('span')
 
@@ -30,25 +34,29 @@ function showRipple(e: MouseEvent) {
     ripple.style.width = `${size}px`
     ripple.style.height = `${size}px`
 
-    const { color } = target._rippuru || { color: null }
+    const { color, count } = target._rippuru
 
     if (color && typeof color === 'string') {
         ripple.style.backgroundColor = color
     }
 
+    if (!count) target._rippuru.count = 0
+    else target._rippuru.count++
 
     const computed = window.getComputedStyle(target)
-    let previousPosition = computed.position
     if (computed && computed.position === 'static') {
         target.style.position = 'relative'
-        previousPosition = 'static'
+        target._rippuru.isStatic = true
     }
 
     wrapper.appendChild(ripple)
     target.appendChild(wrapper)
 
     setTimeout(() => {
-        target.style.position = previousPosition
+        const remain = target._rippuru.count = target._rippuru.count - 1
+        if (!remain && target._rippuru.isStatic) {
+            target.style.position = 'static'
+        }
         target.removeChild(wrapper)
     }, 500)
 }
