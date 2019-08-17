@@ -2,7 +2,7 @@ import { PluginObject } from 'vue'
 import RippuruDirective , { RippuruOptions } from './rippuru'
 import './rippuru.styl'
 
-const Rippuru: PluginObject<RippuruOptions> = {
+const Rippuru: PluginObject<void> = {
     install(Vue, options?) {
         Vue.directive('rippuru', RippuruDirective)
     }

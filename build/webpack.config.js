@@ -2,8 +2,8 @@ const path = require('path')
 // const webpack = require('webpack')
 
 module.exports = {
-    mode: process.env.NODE_ENV,
-    entry: '../src/index.ts',
+    mode: 'production',
+    entry: './src/index.ts',
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: 'rippuru.js',
@@ -34,9 +34,4 @@ module.exports = {
         openPage: 'example.html'
     },
     devtool: '#source-map'
-}
-
-if (process.env.NODE_ENV === 'production') {
-    module.exports.plugins = (module.exports.plugins || []).concat([
-    ])
 }

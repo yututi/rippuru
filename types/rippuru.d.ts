@@ -1,5 +1,9 @@
 import { DirectiveOptions } from 'vue';
 export interface RippuruOptions {
+    isExist?: boolean;
+    color?: string;
+    count?: number;
+    isStatic?: boolean;
 }
-declare const Rippuru: DirectiveOptions;
-export default Rippuru;
+declare const RippuruDirective: DirectiveOptions;
+export default RippuruDirective;

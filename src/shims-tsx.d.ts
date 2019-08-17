@@ -3,6 +3,6 @@ import { RippuruOptions } from './rippuru'
 
 declare global {
     interface Window {
-        Rippuru: PluginObject<RippuruOptions>
+        Rippuru: PluginObject<void>
     }
 }

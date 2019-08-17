@@ -1,6 +1,6 @@
 {
   "name": "rippuru",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "ripple plugin for vue.js",
   "main": "dist/ripple.js",
   "types": "types/index.d.ts",

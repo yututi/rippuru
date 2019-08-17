@@ -4,7 +4,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-    mode: process.env.NODE_ENV,
+    mode: 'development',
     entry: './src/example.ts',
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -21,7 +21,10 @@ module.exports = {
         rules: [
             {
                 test: /\.ts$/,
-                loader: 'ts-loader'
+                loader: 'ts-loader',
+                options: {
+                  appendTsSuffixTo: [/\.vue$/],
+                }
             },
             {
                 test: /\.styl(us)?$/,
@@ -50,9 +53,4 @@ module.exports = {
             template: 'example/example.html'
         })
     ]
-}
-
-if (process.env.NODE_ENV === 'production') {
-    module.exports.plugins = (module.exports.plugins || []).concat([
-    ])
 }

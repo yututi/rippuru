@@ -13,7 +13,7 @@ function addListener(el: RipplableHTMLElement, binding: VNodeDirective) {
     if (el._rippuru.isExist) return
     el._rippuru.isExist = true
 
-    el._rippuru.color = binding.expression
+    el._rippuru.color = binding.arg
     el.addEventListener('mousedown', showRipple)
 }
 
@@ -27,12 +27,12 @@ function showRipple(e: MouseEvent) {
 
     wrapper.classList.add('rippuru-wrapper')
     ripple.classList.add('rippuru-wrapper__ripple')
-    const { x, y, size } = calcPosition(target, e)
-
+    const { x, y, radius } = calcPosition(target, e)
+    const diameter = radius * 2;
     ripple.style.left = `${x}px`
     ripple.style.top = `${y}px`
-    ripple.style.width = `${size}px`
-    ripple.style.height = `${size}px`
+    ripple.style.width = `${diameter}px`
+    ripple.style.height = `${diameter}px`
 
     const { color, count } = target._rippuru
 
@@ -40,7 +40,7 @@ function showRipple(e: MouseEvent) {
         ripple.style.backgroundColor = color
     }
 
-    if (!count) target._rippuru.count = 0
+    if (!count) target._rippuru.count = 1
     else target._rippuru.count++
 
     const computed = window.getComputedStyle(target)
@@ -63,12 +63,24 @@ function showRipple(e: MouseEvent) {
 
 function calcPosition(el: HTMLElement, e: MouseEvent) {
     const { left, top, width, height } = el.getBoundingClientRect()
-    const size = width > height ? width : height
-    const x = e.clientX - left - size / 2
-    const y = e.clientY - top - size / 2
 
+    // const size = width > height ? width : height
+    // const x = e.clientX - left - size / 2
+    // const y = e.clientY - top - size / 2
+    const clickX = e.clientX - left
+    const clickY = e.clientY - top
 
-    return { x, y, size }
+    let radius = 0
+    if (width > height) {
+        radius = width / 2 > clickX ? width - clickX : clickX
+    } else {
+        radius = height / 2 > clickY ? height - clickY : clickY
+    }
+
+    const x = clickX - radius
+    const y = clickY - radius
+
+    return { x, y, radius }
 }
 
 interface RipplableHTMLElement extends HTMLElement {

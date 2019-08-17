@@ -3,6 +3,7 @@
         "sourceMap": true,
         "declaration": true,
         "declarationDir": "types",
+        "experimentalDecorators": true,
         "module": "commonjs",
         "target": "es5",
         "lib": [
@@ -11,10 +12,12 @@
         ],
     },
     "include": [
-        "src"
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue"
     ],
     "compileOnSave": false,
-    "files": [
-        "src/shims-tsx.d.ts"
+    "exclude": [
+      "node_modules"
     ]
 }
