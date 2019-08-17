@@ -6,6 +6,9 @@ export interface RippuruOptions {
     count?: number
     isStatic?: boolean
 }
+interface RipplableHTMLElement extends HTMLElement {
+    _rippuru: RippuruOptions
+}
 
 function addListener(el: RipplableHTMLElement, binding: VNodeDirective) {
     el._rippuru = el._rippuru || {}
@@ -64,9 +67,6 @@ function showRipple(e: MouseEvent) {
 function calcPosition(el: HTMLElement, e: MouseEvent) {
     const { left, top, width, height } = el.getBoundingClientRect()
 
-    // const size = width > height ? width : height
-    // const x = e.clientX - left - size / 2
-    // const y = e.clientY - top - size / 2
     const clickX = e.clientX - left
     const clickY = e.clientY - top
 
@@ -83,9 +83,6 @@ function calcPosition(el: HTMLElement, e: MouseEvent) {
     return { x, y, radius }
 }
 
-interface RipplableHTMLElement extends HTMLElement {
-    _rippuru: RippuruOptions
-}
 
 function removeListener(el: RipplableHTMLElement) {
     delete el._rippuru

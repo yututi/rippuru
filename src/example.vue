@@ -5,6 +5,11 @@
     <input @click="onclick" type="button" value="ineffective for input tag" v-rippuru />
     <button v-rippuru class="round">round button</button>
     <button @click="onclick" v-rippuru:dodgerblue>specify color</button>
+    <div class="fixed" v-rippuru:red>position fixed
+        <button v-rippuru:green>
+            nested
+        </button>
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -38,5 +43,15 @@ button, input[type='button'] {
 
 .blue-txt {
   color: dodgerblue;
+}
+
+.fixed {
+  position: fixed;
+  top: 200px;
+  left: 10px;
+  height: 100px;
+  width: 400px;
+  border: 1px solid gainsboro;
+  padding: 1em;
 }
 </style>

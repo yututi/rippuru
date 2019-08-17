@@ -28,11 +28,5 @@ module.exports = {
             }
         ]
     },
-    devServer: {
-        open: true,
-        contentBase: path.join(__dirname, 'example'),
-        watchContentBase: true,
-        openPage: 'example.html'
-    },
     devtool: '#source-map'
 }
