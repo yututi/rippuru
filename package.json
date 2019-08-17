@@ -1,14 +1,14 @@
 {
   "name": "rippuru",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "ripple plugin for vue.js",
-  "main": "dist/ripple.js",
+  "main": "dist/rippuru.js",
   "types": "types/index.d.ts",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.config.js --progress",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot"
   },
-  "author": "",
+  "author": "yututi",
   "license": "ISC",
   "devDependencies": {
     "cross-env": "^5.2.0",
