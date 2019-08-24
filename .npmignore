@@ -1,1 +1,7 @@
 node_modules/
+src/
+build/
+webpack.config.js
+README.md
+tsconfig.json
+example/

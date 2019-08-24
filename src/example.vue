@@ -5,10 +5,9 @@
     <input @click="onclick" type="button" value="ineffective for input tag" v-rippuru />
     <button v-rippuru class="round">round button</button>
     <button @click="onclick" v-rippuru:dodgerblue>specify color</button>
-    <div class="fixed" v-rippuru:red>position fixed
-        <button v-rippuru:green>
-            nested
-        </button>
+    <div class="fixed" v-rippuru:red>
+      position fixed
+      <button v-rippuru class="green-txt">nested tag</button>
     </div>
   </div>
 </template>
@@ -43,6 +42,10 @@ button, input[type='button'] {
 
 .blue-txt {
   color: dodgerblue;
+}
+
+.green-txt {
+  color: green;
 }
 
 .fixed {

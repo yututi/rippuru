@@ -18,11 +18,12 @@ function addListener(el: RipplableHTMLElement, binding: VNodeDirective) {
 
     el._rippuru.color = binding.arg
     el.addEventListener('mousedown', showRipple)
+    el.addEventListener('touchstart', showRipple, { passive: true })
 }
 
 function showRipple(e: MouseEvent) {
 
-    const target = e.target as RipplableHTMLElement
+    const target = e.currentTarget as RipplableHTMLElement
     if (!target._rippuru || !target._rippuru.isExist) return
 
     const wrapper = document.createElement('span')
@@ -87,6 +88,7 @@ function calcPosition(el: HTMLElement, e: MouseEvent) {
 function removeListener(el: RipplableHTMLElement) {
     delete el._rippuru
     el.removeEventListener('mousedown', showRipple)
+    el.removeEventListener('touchstart', showRipple)
 }
 
 const RippuruDirective: DirectiveOptions = {

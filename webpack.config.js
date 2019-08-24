@@ -12,39 +12,45 @@ module.exports = {
         libraryTarget: 'umd'
     },
     resolve: {
-        extensions: ['.ts', '.js', '.vue'],
-        alias: {
-            vue$: 'vue/dist/vue.esm.js',
-        },
+        extensions: ['.ts', '.js', '.vue']
     },
     module: {
         rules: [
             {
                 test: /\.ts$/,
-                loader: 'ts-loader',
-                options: {
-                  appendTsSuffixTo: [/\.vue$/],
-                }
+                use: [
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            appendTsSuffixTo: [/\.vue$/],
+                        }
+                    },
+                    'cache-loader'
+                ],
             },
             {
                 test: /\.styl(us)?$/,
                 use: [
                     'vue-style-loader',
                     'css-loader',
-                    'stylus-loader'
+                    'stylus-loader',
+                    'cache-loader'
                 ]
             },
             {
                 test: /\.vue$/,
-                loader: 'vue-loader'
+                use: [
+                    'vue-loader',
+                    'cache-loader'
+                ]
             }
         ]
     },
     devServer: {
         open: true,
         contentBase: path.join(__dirname, 'dist'),
-        watchContentBase: false,
-        openPage: 'index.html'
+        openPage: 'index.html',
+        hot: true
     },
     devtool: '#source-map',
     plugins: [
