@@ -7,7 +7,7 @@ npm i rippuru
 ```
 
 ## Demo
-clone this repository and `npm i && npm run serve`.
+clone this repository and `npm i && npm run dev`.
 
 ## How to use
 register plugin.
@@ -17,7 +17,7 @@ import Rippuru from 'rippuru'
 Vue.use(Rippuru)
 ```
 
-use directive.  
+then you can use "v-rippuru" directive.  
 by default, ripple color depends on color of bound element.
 ```html
 <button v-rippuru>
