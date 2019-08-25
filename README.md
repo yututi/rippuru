@@ -1,13 +1,13 @@
 # rippuru
 ripple plugin for vue.js.
 
-## Install
+## Installation
 ```cmd
 npm i rippuru
 ```
 
 ## Demo
-clone this repository and `npm i && npm run dev`.
+clone this repository and run `npm i && npm run dev`.
 
 ## How to use
 register plugin.
