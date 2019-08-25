@@ -1,16 +1,16 @@
 # rippuru
-ripple plugin for vue.js.
+ripple effect plugin for vue.js.
+
+## Demo
+clone this repository and run `npm i && npm run dev`.
 
 ## Installation
 ```cmd
 npm i rippuru
 ```
 
-## Demo
-clone this repository and run `npm i && npm run dev`.
-
 ## How to use
-register plugin.
+register this plugin.
 ```js
 import Vue from 'vue'
 import Rippuru from 'rippuru'
