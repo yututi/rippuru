@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Example from './example.vue'
-import Rippuru from './index'
+import Rippuru from '../src/index'
 
 Vue.use(Rippuru)
 

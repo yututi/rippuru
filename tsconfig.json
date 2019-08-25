@@ -14,10 +14,12 @@
     "include": [
         "src/**/*.ts",
         "src/**/*.tsx",
-        "src/**/*.vue"
+        "src/**/*.vue",
+        "example/*.ts",
+        "example/*.vue"
     ],
     "compileOnSave": false,
     "exclude": [
-      "node_modules"
+        "node_modules"
     ]
 }

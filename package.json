@@ -1,9 +1,9 @@
 {
   "name": "rippuru",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "ripple plugin for vue.js",
   "main": "dist/rippuru.js",
-  "types": "types/index.d.ts",
+  "types": "types/src/index.d.ts",
   "scripts": {
     "build": "webpack --config ./build/webpack.config.js --progress",
     "dev": "webpack-dev-server"
