@@ -1,6 +1,9 @@
 # rippuru
 ripple effect plugin for vue.js.
 
+## Rerquirements
+- Vue : 2.X
+
 ## Demo
 clone this repository and run `npm i && npm run dev`.
 
