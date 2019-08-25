@@ -20,14 +20,16 @@ Vue.use(Rippuru)
 then you can use "v-rippuru" directive.  
 by default, ripple color depends on color of bound element.
 ```html
-<button v-rippuru>
+<!-- this will be blue ripple -->
+<button style="color:blue;" v-rippuru>
     hoge
 </button>
 ```
 
 you can change ripple color by specifying directive arg.
 ```html
-<button v-rippuru:red>
+<!-- this will be red ripple -->
+<button style="color:blue;" v-rippuru:red>
     hoge
 </button>
 ```
